@@ -1,6 +1,6 @@
-# Parallel solver dummy README
+# Parallel solver dummies for preCICE
 
-This repository currently contains two solver dummies for the coupling library [preCICE](https://github.com/precice/precice) that can be executed in parallel. The solver dummies can also be mixed with each other, i.e., each solver can play any role in the coupling!
+This repository currently contains three solver dummies for the coupling library [preCICE](https://github.com/precice/precice) that can be executed in parallel. The solver dummies can also be mixed with each other, i.e., each solver can play any role in the coupling!
 
 Current solver dummies included
 - C++ solver dummy: `cpp/solverdummy-cpp-parallel.cpp`
