@@ -125,7 +125,7 @@ mpirun -n M ./solverdummy-fortran-parallel ../precice-config-parallel.xml Solver
 Example:
 ```
 mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n 2 fortran ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n 2 ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
 ```
 
 ## Remarks
