@@ -7,7 +7,6 @@ int main(int argc, char **argv)
 {
   MPI_Init( nullptr, nullptr );
 
-
   int commRank = -1;
   MPI_Comm_rank(MPI_COMM_WORLD, &commRank);
 
