@@ -7,8 +7,6 @@
 int main(int argc, char **argv)
 {
   double  dt                 = 0.0;
-  int     solverProcessIndex = 0;
-  int     solverProcessSize  = 1;
   int     dimensions         = -1;
   double *vertices;
   double *readData;
@@ -19,6 +17,15 @@ int main(int argc, char **argv)
   int     numberOfVertices = 3;
   int     writeDataID      = -1;
   int     readDataID       = -1;
+
+
+  MPI_Init( NULL, NULL );
+
+  int commRank = -1;
+  MPI_Comm_rank(MPI_COMM_WORLD, &commRank);
+
+  int commSize = -1;
+  MPI_Comm_size(MPI_COMM_WORLD, &commSize);
 
   if (argc != 4) {
     printf("Usage: ./solverdummy configFile solverName meshName\n\n");
@@ -33,13 +40,13 @@ int main(int argc, char **argv)
   const char *participantName = argv[2];
   const char *meshName        = argv[3];
 
-  printf("DUMMY: Running solver dummy with preCICE config file \"%s\", participant name \"%s\", and mesh name \"%s\".\n",
-         configFileName, participantName, meshName);
+  printf("DUMMY (%d): Running solver dummy with preCICE config file \"%s\", participant name \"%s\", and mesh name \"%s\".\n",
+        commRank, configFileName, participantName, meshName);
 
   const char *writeItCheckp = precicec_actionWriteIterationCheckpoint();
   const char *readItCheckp  = precicec_actionReadIterationCheckpoint();
 
-  precicec_createSolverInterface(participantName, configFileName, solverProcessIndex, solverProcessSize);
+  precicec_createSolverInterface(participantName, configFileName, commRank, commSize);
 
   meshID = precicec_getMeshID(meshName);
 
@@ -75,7 +82,7 @@ int main(int argc, char **argv)
   while (precicec_isCouplingOngoing()) {
 
     if (precicec_isActionRequired(writeItCheckp)) {
-      printf("DUMMY: Writing iteration checkpoint \n");
+      printf("DUMMY (%d): Writing iteration checkpoint \n");
       precicec_markActionFulfilled(writeItCheckp);
     }
 
@@ -94,10 +101,10 @@ int main(int argc, char **argv)
     dt = precicec_advance(dt);
 
     if (precicec_isActionRequired(readItCheckp)) {
-      printf("DUMMY: Reading iteration checkpoint \n");
+      printf("DUMMY (%d): Reading iteration checkpoint \n");
       precicec_markActionFulfilled(readItCheckp);
     } else {
-      printf("DUMMY: Advancing in time \n");
+      printf("DUMMY (%d): Advancing in time \n");
     }
   }
 
@@ -105,7 +112,7 @@ int main(int argc, char **argv)
   free(writeData);
   free(readData);
   free(vertexIDs);
-  printf("DUMMY: Closing C solver dummy... \n");
+  printf("DUMMY (%d): Closing C solver dummy... \n");
 
   return 0;
 }
