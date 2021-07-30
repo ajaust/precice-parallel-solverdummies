@@ -185,4 +185,10 @@ _deps
 *.out
 *.app
 
+# Project specific files
 solverdummy-cpp-parallel
+solverdummy-c-parallel
+solverdummy-fortran-parallel
+precice-run/
+*.json
+

@@ -1,8 +1,9 @@
 # Parallel solver dummies for preCICE
 
-This repository currently contains three solver dummies for the coupling library [preCICE](https://github.com/precice/precice) that can be executed in parallel. The solver dummies can also be mixed with each other, i.e., each solver can play any role in the coupling!
+This repository currently contains four solver dummies for the coupling library [preCICE](https://github.com/precice/precice) that can be executed in parallel. The solver dummies can also be mixed with each other, i.e., each solver can play any role in the coupling!
 
 Current solver dummies included
+- C solver dummy: `c/solverdummy-c-parallel.cpp`
 - C++ solver dummy: `cpp/solverdummy-cpp-parallel.cpp`
 - Fortran solver dummy: `fortran/solverdummy-fortran-parallel.f90`
 - Python solver dummy: `python/solverdummy-python-parallel.py`
@@ -10,20 +11,25 @@ Current solver dummies included
 
 ## Requirements
 
-All dummies:
+**All dummies**
 - preCICE v2 (only tested with v2.2.0)
 
-C++ dummy:
+**C dummy**
+- CMake
+- A C compiler
+- MPI (only tested with OpenMPI)
+
+**C++ dummy**
 - CMake
 - A C++ compiler
 - MPI (only tested with OpenMPI)
 
-Fortran dummy:
+**Fortran dummy**
 - CMake
 - A Fortran compiler
 - MPI (only tested with OpenMPI)
 
-The Python dummy additionally needs:
+**Python dummy additionally needs**
 - Python 3
 - mpi4py
 - [Python bindings for preCICE](https://github.com/precice/python-bindings)
@@ -32,6 +38,19 @@ If you have preCICE and the Python bindings installed, you should have all requi
 
 ## Compilation
 
+### C
+
+Compile the C solver dummy and copy it back to the `c` directory:
+
+```
+cd c
+mkdir build
+cd build
+cmake ..
+make
+cp solverdummy-c-parallel ..
+cd ..
+```
 
 ### C++
 
@@ -126,6 +145,19 @@ Example:
 ```
 mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
 mpirun -n 2 ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
+```
+
+### Setup 4: C++ and C
+
+```
+mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
+mpirun -n N ./solverdummy-c-parallel ../precice-config-parallel.xml SolverOne MeshOne
+```
+
+Example:
+```
+mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
+mpirun -n 2 ./solverdummy-c-parallel ../precice-config-parallel.xml  SolverTwo MeshTwo
 ```
 
 ## Remarks
