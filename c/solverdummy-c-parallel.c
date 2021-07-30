@@ -83,7 +83,7 @@ int main(int argc, char **argv)
   while (precicec_isCouplingOngoing()) {
 
     if (precicec_isActionRequired(writeItCheckp)) {
-      printf("DUMMY (%d): Writing iteration checkpoint \n");
+      printf("DUMMY (%d): Writing iteration checkpoint \n", commRank);
       precicec_markActionFulfilled(writeItCheckp);
     }
 
@@ -102,10 +102,10 @@ int main(int argc, char **argv)
     dt = precicec_advance(dt);
 
     if (precicec_isActionRequired(readItCheckp)) {
-      printf("DUMMY (%d): Reading iteration checkpoint \n");
+      printf("DUMMY (%d): Reading iteration checkpoint \n", commRank);
       precicec_markActionFulfilled(readItCheckp);
     } else {
-      printf("DUMMY (%d): Advancing in time \n");
+      printf("DUMMY (%d): Advancing in time \n", commRank);
     }
   }
 
@@ -113,7 +113,9 @@ int main(int argc, char **argv)
   free(writeData);
   free(readData);
   free(vertexIDs);
-  printf("DUMMY (%d): Closing C solver dummy... \n");
+  printf("DUMMY (%d): Closing C solver dummy... \n", commRank);
+
+  MPI_Finalize();
 
   return 0;
 }
