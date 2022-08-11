@@ -197,7 +197,7 @@ julia solverdummy-julia-parallel.jl 2 ../precice-config-parallel.xml SolverTwo
 
 ## Setup 6: Julia and Python
 
-As with [Setup 5](#setup-5) you need to add `<master:sockets/>` to the `precice-config-parallel.xml` file in both participants.
+As with [Setup 5](#setup-5-julia-and-julia) you need to add `<master:sockets/>` to the `precice-config-parallel.xml` file in both participants.
 
 ```shell
 mpirun -n N python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne MeshOne
