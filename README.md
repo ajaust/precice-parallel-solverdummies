@@ -195,18 +195,18 @@ julia solverdummy-julia-parallel.jl 4 ../precice-config-parallel.xml SolverOne
 julia solverdummy-julia-parallel.jl 2 ../precice-config-parallel.xml SolverTwo
 ```
 
-## Setup 6: Julia and Python
+## Setup 6: Julia and C++
 
 As with [Setup 5](#setup-5-julia-and-julia) you need to add `<master:sockets/>` to the `precice-config-parallel.xml` file in both participants.
 
 ```shell
-mpirun -n N python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne MeshOne
+mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
 julia solverdummy-julia-parallel.jl M ../precice-config-parallel.xml SolverTwo
 ```
 
 Example:
 ```shell
-mpirun -n 4 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne MeshOne
+mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
 julia solverdummy-julia-parallel.jl 2 ../precice-config-parallel.xml SolverTwo
 ```
 
