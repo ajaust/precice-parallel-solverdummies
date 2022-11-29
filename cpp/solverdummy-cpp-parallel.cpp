@@ -16,18 +16,17 @@ int main(int argc, char **argv)
   using namespace precice;
   using namespace precice::constants;
 
-  if (argc != 4) {
+  if (argc != 3) {
     std::cout << "Usage: ./solverdummy configFile solverName meshName\n\n";
     std::cout << "Parameter description\n";
     std::cout << "  configurationFile: Path and filename of preCICE configuration\n";
     std::cout << "  solverName:        SolverDummy participant name in preCICE configuration\n";
-    std::cout << "  meshName:          Mesh in preCICE configuration that carries read and write data\n";
     return 1;
   }
 
   const std::string configFileName(argv[1]);
   const std::string solverName(argv[2]);
-  const std::string meshName(argv[3]);
+  const std::string meshName = (solverName == "SolverOne") ? "MeshOne" : "MeshTwo";
 
   std::cout  << "DUMMY (" << commRank << "): Running solver dummy with preCICE config file \"" << configFileName << "\", participant name \"" << solverName << "\", and mesh name \"" << meshName << "\".\n";
 
