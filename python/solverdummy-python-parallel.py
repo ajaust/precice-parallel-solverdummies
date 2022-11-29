@@ -12,7 +12,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("configurationFileName",
                     help="Name of the xml config file.", type=str)
 parser.add_argument("participantName", help="Name of the solver.", type=str)
-parser.add_argument("meshName", help="Name of the mesh.", type=str)
 
 try:
     args = parser.parse_args()
@@ -28,10 +27,12 @@ mesh_name = args.meshName
 if participant_name == 'SolverOne':
     write_data_name = 'dataOne'
     read_data_name = 'dataTwo'
+    mesh_name = 'MeshOne'
 
 if participant_name == 'SolverTwo':
     read_data_name = 'dataOne'
     write_data_name = 'dataTwo'
+    mesh_name = 'MeshTwo'
 
 num_vertices = 1  # Number of vertices
 
