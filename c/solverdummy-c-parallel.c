@@ -18,7 +18,7 @@ int main(int argc, char **argv)
   int     numberOfVertices = 3;
   int     writeDataID      = -1;
   int     readDataID       = -1;
-
+  const char *meshName;
 
   MPI_Init( NULL, NULL );
 
@@ -39,8 +39,6 @@ int main(int argc, char **argv)
   const char *configFileName  = argv[1];
   const char *participantName = argv[2];
 
-  const char meshName[8] = (strcmp(participantName, "SolverOne") == 0) ? "MeshOne" : "MeshTwo";
-
   printf("DUMMY (%d): Running solver dummy with preCICE config file \"%s\", participant name \"%s\", and mesh name \"%s\".\n",
         commRank, configFileName, participantName, meshName);
 
@@ -54,10 +52,12 @@ int main(int argc, char **argv)
   if (strcmp(participantName, "SolverOne") == 0) {
     writeDataID = precicec_getDataID("dataOne", meshID);
     readDataID  = precicec_getDataID("dataTwo", meshID);
+    meshName = "MeshOne";
   }
   if (strcmp(participantName, "SolverTwo") == 0) {
     writeDataID = precicec_getDataID("dataTwo", meshID);
     readDataID  = precicec_getDataID("dataOne", meshID);
+    meshName = "MeshTwo";
   }
 
   dimensions = precicec_getDimensions();
