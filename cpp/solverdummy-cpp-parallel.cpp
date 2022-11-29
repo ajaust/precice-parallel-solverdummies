@@ -28,7 +28,7 @@ int main(int argc, char **argv)
   const std::string solverName(argv[2]);
 
 
-  std::cout  << "DUMMY (" << commRank << "): Running solver dummy with preCICE config file \"" << configFileName << "\", participant name \"" << solverName << "\", and mesh name \"" << meshName << "\".\n";
+  std::cout  << "DUMMY (" << commRank << "): Running solver dummy with preCICE config file \"" << configFileName << "\"and participant name.\"" << solverName << "\".\n";
 
   SolverInterface interface(solverName, configFileName, commRank, commSize);
 
@@ -42,12 +42,12 @@ int main(int argc, char **argv)
   if (solverName == "SolverOne") {
     dataWriteName = "dataOne";
     dataReadName  = "dataTwo";
-    meshName = "MeshOne"
+    meshName = "MeshOne";
   }
   if (solverName == "SolverTwo") {
     dataReadName  = "dataOne";
     dataWriteName = "dataTwo";
-    meshName = "MeshTwo"
+    meshName = "MeshTwo";
   }
   const int readDataID  = interface.getDataID(dataReadName, meshID);
   const int writeDataID = interface.getDataID(dataWriteName, meshID);
