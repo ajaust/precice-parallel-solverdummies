@@ -31,15 +31,16 @@ PROGRAM main
   WRITE (*,FMT1) 'DUMMY(', rank, '): Starting Fortran solver dummy...'
   CALL getarg(1, config)
   CALL getarg(2, participantName)
-  CALL getarg(3, meshName)
 
   IF(participantName .eq. 'SolverOne') THEN
     writeDataName = 'dataOne'
     readDataName = 'dataTwo'
+    meshName = 'MeshOne'
   ENDIF
   IF(participantName .eq. 'SolverTwo') THEN
     writeDataName = 'dataTwo'
     readDataName = 'dataOne'
+    meshName = 'MeshTwo'
   ENDIF
 
   dt = 1

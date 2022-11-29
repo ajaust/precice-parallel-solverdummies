@@ -103,66 +103,66 @@ Further information:
 ### Setup 1: C++ and C++
 
 ```
-mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n M ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n M ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverTwo
 ```
 
 Example:
 ```
-mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n 2 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n 2 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverTwo
 ```
 
 ### Setup 2: Python and Python
 
 ```
-mpirun -n N python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n M python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n N python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne
+mpirun -n M python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo
 ```
 
 Example:
 ```
-mpirun -n 4 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n 2 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n 4 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverOne
+mpirun -n 2 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo
 ```
 
 ### Setup 3: C++ and Python
 
 ```
-mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n M python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n M python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo
 ```
 
 Example:
 ```
-mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n 2 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n 2 python3 solverdummy-python-parallel.py ../precice-config-parallel.xml SolverTwo
 ```
 
 ### Setup 4: Fortran and C++
 
 ```
-mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n M ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n M ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo
 ```
 
 Example:
 ```
-mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n 2 ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo MeshTwo
+mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n 2 ./solverdummy-fortran-parallel ../precice-config-parallel.xml SolverTwo
 ```
 
 ### Setup 4: C++ and C
 
 ```
-mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n N ./solverdummy-c-parallel ../precice-config-parallel.xml SolverOne MeshOne
+mpirun -n N ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n N ./solverdummy-c-parallel ../precice-config-parallel.xml SolverOne
 ```
 
 Example:
 ```
-mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
-mpirun -n 2 ./solverdummy-c-parallel ../precice-config-parallel.xml  SolverTwo MeshTwo
+mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne
+mpirun -n 2 ./solverdummy-c-parallel ../precice-config-parallel.xml  SolverTwo
 ```
 
 ### Setup 5: Julia and Julia
@@ -209,8 +209,6 @@ Example:
 mpirun -n 4 ./solverdummy-cpp-parallel ../precice-config-parallel.xml SolverOne MeshOne
 julia solverdummy-julia-parallel.jl 2 ../precice-config-parallel.xml SolverTwo
 ```
-
-
 
 ## Remarks
 
