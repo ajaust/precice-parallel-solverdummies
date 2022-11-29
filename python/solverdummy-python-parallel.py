@@ -22,7 +22,6 @@ except SystemExit:
 
 configuration_file_name = args.configurationFileName
 participant_name = args.participantName
-mesh_name = args.meshName
 
 if participant_name == 'SolverOne':
     write_data_name = 'dataOne'
