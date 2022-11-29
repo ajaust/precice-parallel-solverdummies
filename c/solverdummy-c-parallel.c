@@ -28,18 +28,18 @@ int main(int argc, char **argv)
   int commSize = -1;
   MPI_Comm_size(MPI_COMM_WORLD, &commSize);
 
-  if (argc != 4) {
+  if (argc != 3) {
     printf("Usage: ./solverdummy configFile solverName meshName\n\n");
     printf("Parameter description\n");
     printf("  configurationFile: Path and filename of preCICE configuration\n");
     printf("  solverName:        SolverDummy participant name in preCICE configuration\n");
-    printf("  meshName:          Mesh in preCICE configuration that carries read and write data\n");
     return 1;
   }
 
   const char *configFileName  = argv[1];
   const char *participantName = argv[2];
-  const char *meshName        = argv[3];
+
+  const char meshName[8] = (strcmp(participantName, "SolverOne") == 0) ? "MeshOne" : "MeshTwo";
 
   printf("DUMMY (%d): Running solver dummy with preCICE config file \"%s\", participant name \"%s\", and mesh name \"%s\".\n",
         commRank, configFileName, participantName, meshName);
